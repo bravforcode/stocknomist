@@ -13,6 +13,7 @@ from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 
 from backend.app.api.routes import router as api_router, get_screener_service
+from backend.app.api.crypto_routes import router as crypto_router
 from backend.app.config import settings
 
 logger = logging.getLogger(__name__)
@@ -68,6 +69,7 @@ def root_health():
 # Mount API Router (/api)
 # -----------------------------------------------------------------------------
 app.include_router(api_router, prefix="/api", tags=["Stocknomist API"])
+app.include_router(crypto_router, prefix="/api", tags=["Crypto API"])
 
 
 # -----------------------------------------------------------------------------
